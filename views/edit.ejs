@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição de Tarefas</title>
+    <link rel="stylesheet" href="/styles.css "> 
+
+</head>
+<body>
+    <h1>Editar Tarefas</h1>
+    <form action="/edit/<%= tarefa.tarefa_id %>" method="POST">
+        <label>Titulo</label>
+        <input type="text" name="titulo" value="<%= tarefa.titulo %>" required><br>
+
+        <label>Descrição</label>
+        <input type="text" name="descricao" value="<%= tarefa.descricao %>" required><br>
+
+        <label>Data Criação</label>
+        <input type="text" name="data_criacao" value="<%= new Date(tarefa.data_criacao).toLocaleDateString('pt-BR') + ' ' + new Date(tarefa.data_criacao).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) %>" disabled><br>
+
+        <label>Data Finalização</label>
+        <input type="datetime-local" name="data_finalizacao" value="<%= tarefa.data_finalizacao ? new Date(tarefa.data_finalizacao).toISOString().slice(0, 16) : '' %>" required><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
